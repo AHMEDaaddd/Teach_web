@@ -6,7 +6,7 @@ authors = ["ismailov.ahmed.2004@gmail.com>"]
 package-mode = false
 
 [tool.poetry.dependencies]
-python = "^3.13"
+python = "^3.12"
 django = ">=5.1.2,<5.2"
 pillow = "^10.4"
 djangorestframework = "3.15.2"

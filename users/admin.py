@@ -10,16 +10,19 @@ class UserCreationForm(forms.ModelForm):
         model = User
         fields = ("email", "phone", "city", "avatar")
 
+
 class UserChangeForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ("email", "phone", "city", "avatar", "is_active", "is_staff", "is_superuser")
+
 
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
     add_form = UserCreationForm
     form = UserChangeForm
     model = User
+
     list_display = ("id", "email", "city", "is_staff", "is_active")
     list_filter = ("is_staff", "is_active")
     ordering = ("id",)

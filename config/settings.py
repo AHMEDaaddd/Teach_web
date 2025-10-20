@@ -8,7 +8,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "dev-secret-key")
 DEBUG = True
 
 # Для локальной разработки пустой список ОК
-ALLOWED_HOSTS: list[str] = []
+ALLOWED_HOSTS: list[str] = ["127.0.0.1", "localhost"]
 
 INSTALLED_APPS = [
     # Django core
@@ -42,7 +42,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],  # <-- добавили
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -54,6 +54,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = "config.wsgi.application"
 ASGI_APPLICATION = "config.asgi.application"
@@ -94,18 +95,14 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 #Кастомный пользователь (логин по email)
 AUTH_USER_MODEL = "users.User"
 
-# куда отправлять после успешного логина
 LOGIN_REDIRECT_URL = "/"
-# куда отправлять после логаута
 LOGOUT_REDIRECT_URL = "/"
 
 # DRF: базовая конфигурация для разработки
 REST_FRAMEWORK = {
-    # Домашка просит пока не закрывать доступ — оставим AllowAny.
     "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.AllowAny",
+        "rest_framework.permissions.AllowAny",  # по условию ДЗ безопасность не включаем
     ],
-    # Оставим логин в Browsable API и базовую аутентификацию для удобства тестов
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.BasicAuthentication",
@@ -114,10 +111,11 @@ REST_FRAMEWORK = {
         "rest_framework.renderers.JSONRenderer",
         "rest_framework.renderers.BrowsableAPIRenderer",
     ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Teach Web API',
-    'DESCRIPTION': 'Документация для API курсов и уроков',
-    'VERSION': '1.0.0',
+    "TITLE": "Teach Web API",
+    "DESCRIPTION": "Документация для API курсов и уроков",
+    "VERSION": "1.0.0",
 }

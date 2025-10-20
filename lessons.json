@@ -1,0 +1,29 @@
+﻿{
+    "value":  [
+                  {
+                      "id":  3,
+                      "course":  3,
+                      "title":  "???? 1. ???????? ? Django",
+                      "description":  "??? ????? Django ? ????? ????? REST.",
+                      "preview":  null,
+                      "video_url":  "https://youtu.be/dQw4w9WgXcQ"
+                  },
+                  {
+                      "id":  4,
+                      "course":  3,
+                      "title":  "???? 2. ?????????????",
+                      "description":  "?????? ????????????? ??????.",
+                      "preview":  null,
+                      "video_url":  "https://example.com/serializers"
+                  },
+                  {
+                      "id":  5,
+                      "course":  3,
+                      "title":  "???? 3. ViewSet ? Router",
+                      "description":  "??????? API ??? ??????.",
+                      "preview":  null,
+                      "video_url":  "https://example.com/viewsets"
+                  }
+              ],
+    "Count":  3
+}
